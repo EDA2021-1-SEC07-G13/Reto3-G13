@@ -33,11 +33,21 @@ Presenta el menu de opciones y por cada seleccion
 se hace la solicitud al controlador para ejecutar la
 operación solicitada
 """
+crimefile = 'user_track_hashtag_timestamp-small.csv'
 
 def printMenu():
+    print("\n")
+    print("*******************************************")
     print("Bienvenido")
-    print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("1- Inicializar analizador")
+    print("2- Cargar información")
+    print('3- Requerimiento 1  ♥ ♥ ♥ ♥')
+    print('4- Requerimiento 2  ♠ ♠ ♠ ♠')
+    print('5- Requerimiento 3  ♣ ♣ ♣ ♣')
+    print('6- Requerimiento 4  ♦ ♦ ♦ ♦')
+    print('7- Requerimiento 5  ♦ ♣ ♠ ♥')
+    print("0- Salir")
+    print("*******************************************")
 
 catalog = None
 
@@ -48,11 +58,20 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
-        print("Cargando información de los archivos ....")
+        print("\nInicializando...Por favor, espere en linea.")
+        # cont es el controlador que se usará de acá en adelante
+        cont = controller.init()
+        print("\nAgradecemos su estadia en la linea.")
+        print("\nInicializado correctamente!")
 
     elif int(inputs[0]) == 2:
-        pass
-
+        print("\nCargando información de los eventos...")
+        controller.loadData(cont, crimefile)
+        print('Eventos cargados: ' + str(controller.crimesSize(cont)))
+        print('Altura del arbol: ' + str(controller.indexHeight(cont)))
+        print('Elementos en el arbol: ' + str(controller.indexSize(cont)))
+        print('Menor Llave: ' + str(controller.minKey(cont)))
+        print('Mayor Llave: ' + str(controller.maxKey(cont)))
     else:
         sys.exit(0)
 sys.exit(0)
