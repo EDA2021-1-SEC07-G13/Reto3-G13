@@ -41,7 +41,7 @@ def init():
 
 # Funciones para la carga de datos
 
-def loadData(analyzer, crimesfile):
+def loadData(analyzer, crimesfile,contextfile):
     """
     Carga los datos de los archivos CSV en el modelo
     """
@@ -50,11 +50,24 @@ def loadData(analyzer, crimesfile):
                                 delimiter=",")
     for crime in input_file:
         model.addCrime(analyzer, crime)
+
+
+    contextfile = cf.data_dir + contextfile
+    input_file1 = csv.DictReader(open(contextfile, encoding="utf-8"),
+                                delimiter=',')
+    
+    for line in input_file1:
+        model.addCosas(analyzer,line)
     return analyzer
+
+
 
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
+
+def autoresSize(analyzer):
+    return model.autoresSize(analyzer)
 
 def crimesSize(analyzer):
     """
@@ -88,3 +101,24 @@ def maxKey(analyzer):
     La mayor llave del arbol
     """
     return model.maxKey(analyzer)
+
+
+def gfdhdfhsagfas(analyzer,genero):
+    x = model.checekeador(analyzer, genero)
+    return x
+
+def contareventos(listadelistas):
+    return model.contareventos(listadelistas)
+
+
+def req1(map, keylo, keyhi):
+    return model.Req1(map, keylo, keyhi)
+
+def req2y3(analyzer, valorminimoenergy,valormaximoenergy,valorminimodance,valormaximodance):
+    model.req2y3(analyzer, valorminimoenergy,valormaximoenergy,valorminimodance,valormaximodance)
+
+def req2y31(analyzer, valorminimoenergy,valormaximoenergy,valorminimodance,valormaximodance):
+    model.req2y31(analyzer, valorminimoenergy,valormaximoenergy,valorminimodance,valormaximodance)
+
+def anadirgenero(analyzer,nombre,mini,maxi):
+    model.anadirgenero(analyzer,nombre,mini,maxi)
